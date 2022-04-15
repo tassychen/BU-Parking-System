@@ -1,0 +1,60 @@
+--
+-- File generated with SQLiteStudio v3.3.3 on Thu Apr 14 12:51:36 2022
+--
+-- Text encoding used: ISO-8859-6
+--
+PRAGMA foreign_keys = off;
+BEGIN TRANSACTION;
+
+-- Table: location
+DROP TABLE IF EXISTS location;
+
+CREATE TABLE location (
+    name      VARCHAR (100) PRIMARY KEY,
+    latitude  REAL,
+    address   VARCHAR (100),
+    longitude REAL,
+    title     VARCHAR (100),
+    entrance  VARCHAR (100),
+    size      INTEGER
+);
+
+INSERT INTO location (name, latitude, address, longitude, title, entrance, size) VALUES ('agganis', 42.35235580985923, '925 Commonwealth Avenue', -71.11772127450622, 'Agganis Arena', 'entrance on Harry Agganis Way', NULL);
+INSERT INTO location (name, latitude, address, longitude, title, entrance, size) VALUES ('langsam', 42.35331905254574, '142 Gardner Street', -71.1228019601163, 'Langsam Garage', NULL, NULL);
+INSERT INTO location (name, latitude, address, longitude, title, entrance, size) VALUES ('buick', 42.35210382678141, '25 Buick Street', -71.11502725640673, 'Buick Street Lot', NULL, NULL);
+INSERT INTO location (name, latitude, address, longitude, title, entrance, size) VALUES ('cfa', 42.35153882813562, '855 Commonwealth Avenue', -71.1138312447708, 'CFA Lot', 'entrance on Harry Agganis Way', NULL);
+INSERT INTO location (name, latitude, address, longitude, title, entrance, size) VALUES ('essex', 42.34996088119367, '148 Essex Street', -71.11125763128003, 'Essex Street Garage & Lot', NULL, NULL);
+INSERT INTO location (name, latitude, address, longitude, title, entrance, size) VALUES ('lowerbridge', 42.35165834340202, '3 University Road', -71.1102084564067, 'Lower Bridge Lot', NULL, NULL);
+INSERT INTO location (name, latitude, address, longitude, title, entrance, size) VALUES ('upperbridge', 42.35143293081643, '1 University Road', -71.10983037360717, 'Upper Bridget Lot', NULL, NULL);
+INSERT INTO location (name, latitude, address, longitude, title, entrance, size) VALUES ('cas', 42.3507654589886, '240 Bay State Road', -71.104642052697, 'CAS Lot', 'entrance on Hinsdale Mall', NULL);
+INSERT INTO location (name, latitude, address, longitude, title, entrance, size) VALUES ('warren', 42.34939648328429, '700 Commonwealth Avenue', -71.10392795826158, 'Warren Tower Garage', NULL, NULL);
+INSERT INTO location (name, latitude, address, longitude, title, entrance, size) VALUES ('fiveseventyfive', 42.34957384140391, '575 Commonwealth Avenue', -71.09867751593434, NULL, NULL, NULL);
+INSERT INTO location (name, latitude, address, longitude, title, entrance, size) VALUES ('rafik', 42.34978360322057, '595 Commonwealth Avenue', -71.09967648895285, 'Rafik B. Hariri Building Garage', NULL, NULL);
+INSERT INTO location (name, latitude, address, longitude, title, entrance, size) VALUES ('kenmore', 42.34947307057706, '549 Commonwealth Avenue', -71.09761386778928, 'Kenmore Lot', NULL, NULL);
+INSERT INTO location (name, latitude, address, longitude, title, entrance, size) VALUES ('seventhirtysevenfifty', 42.34986499037443, '730/750 Commonwealth Avenue', -71.106231908515, NULL, NULL, NULL);
+INSERT INTO location (name, latitude, address, longitude, title, entrance, size) VALUES ('sevensixtysix', 42.3501319315078, '766 Commonwealth Avenue', -71.10809568709799, NULL, NULL, NULL);
+INSERT INTO location (name, latitude, address, longitude, title, entrance, size) VALUES ('eightninety', 42.35077184298448, '890 Commonwealth Avenue', -71.11552617175231, NULL, 'entrance on Dummer Street', NULL);
+INSERT INTO location (name, latitude, address, longitude, title, entrance, size) VALUES ('orange1', 42.34774843721593, '29-47 Buswell Street', -71.1058815527099, 'Street Parking', NULL, 22);
+INSERT INTO location (name, latitude, address, longitude, title, entrance, size) VALUES ('orange2', 42.3479953595156, '2 -22 Buswell Street', -71.10395584477165, 'Street Parking', NULL, 17);
+INSERT INTO location (name, latitude, address, longitude, title, entrance, size) VALUES ('orange3', 42.34788127817424, '46 Mountfort Street', -71.10331807360758, 'Street Parking', NULL, 3);
+INSERT INTO location (name, latitude, address, longitude, title, entrance, size) VALUES ('orange4', 42.34880365168017, '830-824 Mountfort Street', -71.10709471778706, 'Street Parking', NULL, 9);
+INSERT INTO location (name, latitude, address, longitude, title, entrance, size) VALUES ('granby', 42.34890818448238, '665 Commonwealth Avenue', -71.09799848954573, 'Granby Lot', NULL, NULL);
+
+-- Table: permit
+DROP TABLE IF EXISTS permit;
+
+CREATE TABLE permit (
+    name        VARCHAR (100),
+    fallPrice   INTEGER,
+    summerPrice INTEGER,
+    springPrice INTEGER,
+    weeklyPrice INTEGER,
+    dailyPrice  INTEGER,
+    userType    VARCHAR (100),
+    permitID    INTEGER       PRIMARY KEY,
+    paymentFreq TEXT          CHECK (paymentFreq IN ('day', 'week', 'semester') ) 
+);
+
+
+COMMIT TRANSACTION;
+PRAGMA foreign_keys = on;
