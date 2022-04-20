@@ -2,7 +2,6 @@ package com.example.myapplication;
 
 import android.os.Bundle;
 
-import com.example.myapplication.database.AppDatabase;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -10,17 +9,12 @@ import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
-import androidx.room.Database;
-import androidx.room.Room;
 
 import com.example.myapplication.databinding.ActivityMainBinding;
-
-import java.io.File;
 
 public class MainActivity extends AppCompatActivity {
 
     private ActivityMainBinding binding;
-    public AppDatabase database;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,10 +32,5 @@ public class MainActivity extends AppCompatActivity {
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment_activity_main);
         NavigationUI.setupActionBarWithNavController(this, navController, appBarConfiguration);
         NavigationUI.setupWithNavController(binding.navView, navController);
-
-        AppDatabase database = Room.databaseBuilder(this, AppDatabase.class, "parking.db")
-                .createFromAsset("database/parking.db")
-                .build();
-
     }
 }

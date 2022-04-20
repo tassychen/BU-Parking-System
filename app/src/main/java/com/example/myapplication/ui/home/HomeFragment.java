@@ -1,86 +1,85 @@
 package com.example.myapplication.ui.home;
 
-import com.example.myapplication.database.LocationDao;
-import com.example.myapplication.MainActivity;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
-import androidx.room.Room;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentPagerAdapter;
+import androidx.viewpager.widget.ViewPager;
+
 
 import com.example.myapplication.R;
-import com.example.myapplication.database.AppDatabase;
-import com.google.android.gms.maps.MapView;
-import com.google.android.gms.maps.CameraUpdateFactory;
-import com.google.android.gms.maps.GoogleMap;
-import com.google.android.gms.maps.MapsInitializer;
-import com.google.android.gms.maps.OnMapReadyCallback;
-import com.google.android.gms.maps.model.LatLng;
-import com.google.android.gms.maps.model.MarkerOptions;
+import com.example.myapplication.databinding.FragmentHomeBinding;
+import com.example.myapplication.ui.home.tabs.AllLocationsTab;
+import com.example.myapplication.ui.home.tabs.PermitLocationsTab;
+import com.example.myapplication.ui.home.tabs.SectionsPagerAdapter;
+import com.google.android.material.tabs.TabLayout;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class HomeFragment extends Fragment {
+    private FragmentHomeBinding binding;
 
-    MapView mMapView;
-    private GoogleMap googleMap;
-    AppDatabase database;
+    @Override
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+    }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
-        View rootView = inflater.inflate(R.layout.fragment_home, container, false);
+        View view = inflater.inflate(R.layout.fragment_home,container, false);
+        // Setting ViewPager for each Tabs
+        ViewPager viewPager = (ViewPager) view.findViewById(R.id.view_pager);
+        setupViewPager(viewPager);
+        // Set Tabs inside Toolbar
+        TabLayout tabs = (TabLayout) view.findViewById(R.id.tabs);
+        tabs.setupWithViewPager(viewPager);
 
-        mMapView = (MapView) rootView.findViewById(R.id.mapView);
-        mMapView.onCreate(savedInstanceState);
+        return view;
+    }
 
-        mMapView.onResume(); // needed to get the map to display immediately
+    private void setupViewPager(ViewPager viewPager) {
+        Adapter adapter = new Adapter(getChildFragmentManager());
+        adapter.addFragment(new AllLocationsTab(), "All");
+        adapter.addFragment(new PermitLocationsTab(), "Permit");
 
-        try {
-            MapsInitializer.initialize(getActivity().getApplicationContext());
-        } catch (Exception e) {
-            e.printStackTrace();
+        viewPager.setAdapter(adapter);
+    }
+
+    static class Adapter extends FragmentPagerAdapter {
+        private final List<Fragment> mFragmentList = new ArrayList<>();
+        private final List<String> mFragmentTitleList = new ArrayList<>();
+
+        public Adapter(FragmentManager manager) {
+            super(manager);
         }
 
+        @Override
+        public Fragment getItem(int position) {
+            return mFragmentList.get(position);
+        }
 
+        @Override
+        public int getCount() {
+            return mFragmentList.size();
+        }
 
-        mMapView.getMapAsync(new OnMapReadyCallback() {
-            @Override
-            public void onMapReady(GoogleMap mMap) {
-                googleMap = mMap;
+        public void addFragment(Fragment fragment, String title) {
+            mFragmentList.add(fragment);
+            mFragmentTitleList.add(title);
+        }
 
-                // move the camera to BU
-                LatLng bu = new LatLng(42.351139402544476, -71.10977147739284);
-                mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(bu,14.0f));
-
-            }
-        });
-
-        return rootView;
+        @Override
+        public CharSequence getPageTitle(int position) {
+            return mFragmentTitleList.get(position);
+        }
     }
 
-    @Override
-    public void onResume() {
-        super.onResume();
-        mMapView.onResume();
-    }
-
-    @Override
-    public void onPause() {
-        super.onPause();
-        mMapView.onPause();
-    }
-
-    @Override
-    public void onDestroy() {
-        super.onDestroy();
-        mMapView.onDestroy();
-    }
-
-    @Override
-    public void onLowMemory() {
-        super.onLowMemory();
-        mMapView.onLowMemory();
-    }
 }

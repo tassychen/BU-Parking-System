@@ -1,12 +1,5 @@
---
--- File generated with SQLiteStudio v3.3.3 on Thu Apr 14 12:51:36 2022
---
--- Text encoding used: ISO-8859-6
---
 PRAGMA foreign_keys = off;
 BEGIN TRANSACTION;
-
--- Table: location
 DROP TABLE IF EXISTS location;
 
 CREATE TABLE location (
@@ -39,21 +32,6 @@ INSERT INTO location (name, latitude, address, longitude, title, entrance, size)
 INSERT INTO location (name, latitude, address, longitude, title, entrance, size) VALUES ('orange3', 42.34788127817424, '46 Mountfort Street', -71.10331807360758, 'Street Parking', NULL, 3);
 INSERT INTO location (name, latitude, address, longitude, title, entrance, size) VALUES ('orange4', 42.34880365168017, '830-824 Mountfort Street', -71.10709471778706, 'Street Parking', NULL, 9);
 INSERT INTO location (name, latitude, address, longitude, title, entrance, size) VALUES ('granby', 42.34890818448238, '665 Commonwealth Avenue', -71.09799848954573, 'Granby Lot', NULL, NULL);
-
--- Table: permit
-DROP TABLE IF EXISTS permit;
-
-CREATE TABLE permit (
-    name        VARCHAR (100),
-    fallPrice   INTEGER,
-    summerPrice INTEGER,
-    springPrice INTEGER,
-    weeklyPrice INTEGER,
-    dailyPrice  INTEGER,
-    userType    VARCHAR (100),
-    permitID    INTEGER       PRIMARY KEY,
-    paymentFreq TEXT          CHECK (paymentFreq IN ('day', 'week', 'semester') ) 
-);
 
 
 COMMIT TRANSACTION;
