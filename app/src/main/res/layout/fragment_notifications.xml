@@ -7,16 +7,67 @@
     tools:context=".ui.notifications.NotificationsFragment">
 
     <TextView
-        android:id="@+id/text_notifications"
+        android:id="@+id/registered_vehicle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
+        android:layout_marginTop="55dp"
+        android:textSize="35sp"
+        android:text = "Registered Vehicle"
+        android:textStyle="bold"
         android:textAlignment="center"
-        android:textSize="20sp"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/make"
+        android:layout_width="270dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        android:textSize="24sp"
+        android:text = "Make:"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.503"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/registered_vehicle" />
+
+    <TextView
+        android:id="@+id/model"
+        android:layout_width="270dp"
+        android:layout_height="wrap_content"
+        android:textSize="24sp"
+        android:text = "Model:"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/make"/>
+    <TextView
+        android:id="@+id/color"
+        android:layout_width="270dp"
+        android:layout_height="wrap_content"
+        android:textSize="24sp"
+        android:text = "Color:"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/model"/>
+    <TextView
+        android:id="@+id/number"
+        android:layout_width="270dp"
+        android:layout_height="wrap_content"
+        android:textSize="24sp"
+        android:text = "Plate number:"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/color"/>
+    <TextView
+        android:id="@+id/state"
+        android:layout_width="270dp"
+        android:layout_height="wrap_content"
+        android:textSize="24sp"
+        android:text = "Plate State:"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/number"/>
+
+
 </androidx.constraintlayout.widget.ConstraintLayout>
