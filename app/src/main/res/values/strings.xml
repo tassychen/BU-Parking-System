@@ -5,4 +5,5 @@
     <string name="title_notifications">Notifications</string>
     <string name="tab_text_1">All</string>
     <string name="tab_text_2">Permit</string>
+    <string name="submit">Submit</string>
 </resources>
