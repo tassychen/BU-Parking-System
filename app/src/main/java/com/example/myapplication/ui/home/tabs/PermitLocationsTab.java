@@ -3,9 +3,11 @@ package com.example.myapplication.ui.home.tabs;
 import com.example.myapplication.MainActivity;
 
 import android.os.Bundle;
+import android.util.TypedValue;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.RelativeLayout;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -101,6 +103,22 @@ public class PermitLocationsTab extends Fragment {
         userType = "Student";
         permitType = "Orange";
 
+        View zoomControls = rootView.findViewById(0x1);
+
+        if (zoomControls != null && zoomControls.getLayoutParams() instanceof RelativeLayout.LayoutParams) {
+            // ZoomControl is inside of RelativeLayout
+            RelativeLayout.LayoutParams params_zoom = (RelativeLayout.LayoutParams) zoomControls.getLayoutParams();
+
+            // Align it to - parent top|left
+            params_zoom.addRule(RelativeLayout.ALIGN_PARENT_TOP);
+            params_zoom.addRule(RelativeLayout.ALIGN_PARENT_RIGHT);
+
+            // Update margins, set to 10dp
+            final int margin = (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 10,
+                    getResources().getDisplayMetrics());
+            params_zoom.setMargins(margin, margin, margin, margin);
+        }
+
         try {
             MapsInitializer.initialize(getActivity().getApplicationContext());
         } catch (Exception e) {
@@ -114,8 +132,7 @@ public class PermitLocationsTab extends Fragment {
                 mMap = googleMap;
 
                 // Time now
-                //time = LocalTime.now();
-                time = LocalTime.of(12,0);
+                time = LocalTime.now();
 
                 // Day of week
                 calendar = Calendar.getInstance();

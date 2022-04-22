@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "353770213188",
+    "project_id": "buparking",
+    "storage_bucket": "buparking.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:353770213188:android:b5383a640ced89ee6d5111",
+        "android_client_info": {
+          "package_name": "com.example.myapplication"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "353770213188-9cskb62fl7olamsf6672oj4ob1lev2na.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB9npMpypIXLGQSWb-lVUzDW2GoIv3E97Q"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "353770213188-9cskb62fl7olamsf6672oj4ob1lev2na.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

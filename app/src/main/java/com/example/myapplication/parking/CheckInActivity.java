@@ -16,20 +16,20 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.myapplication.MainActivity;
 import com.example.myapplication.R;
+import com.example.myapplication.databinding.ActivityCheckInBinding;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
-
-import com.example.myapplication.databinding.ActivityParkBinding;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
-public class ParkActivity extends AppCompatActivity implements OnMapReadyCallback{
+public class CheckInActivity extends AppCompatActivity implements OnMapReadyCallback{
 
     private GoogleMap mMap;
-    private ActivityParkBinding binding;
+    private ActivityCheckInBinding binding;
+    private String location;
     private LatLng agganis;
     private LatLng langsam;
     private LatLng buick;
@@ -78,7 +78,7 @@ public class ParkActivity extends AppCompatActivity implements OnMapReadyCallbac
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        binding = ActivityParkBinding.inflate(getLayoutInflater());
+        binding = ActivityCheckInBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
         Spinner spinner = (Spinner)findViewById(R.id.spinner);
@@ -88,7 +88,7 @@ public class ParkActivity extends AppCompatActivity implements OnMapReadyCallbac
         spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parentView, View selectedItemView, int position, long id) {
-                String location = (String) parentView.getItemAtPosition(position);
+                location = (String) parentView.getItemAtPosition(position);
                 addMarker(location);
             }
 
@@ -105,6 +105,7 @@ public class ParkActivity extends AppCompatActivity implements OnMapReadyCallbac
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(getApplicationContext(), CrowdActivity.class);
+                //intent.putExtra("location", location);
                 startActivity(intent);
             }
         });
@@ -160,18 +161,8 @@ public class ParkActivity extends AppCompatActivity implements OnMapReadyCallbac
         Granby = new MarkerOptions().position(granby).title("Granby Lot").snippet("Address: 665 Commonwealth Avenue");
     }
 
-    public void Park(){
-
-    }
-
     public void addMarker(String location) {
-        Context context = getApplicationContext();
-        CharSequence text = location;
-        int duration = Toast.LENGTH_SHORT;
         mMap.clear();
-
-        Toast toast = Toast.makeText(context, text, duration);
-        toast.show();
 
         switch (location){
             case "Agganis Arena": mMap.addMarker(Agganis).showInfoWindow();

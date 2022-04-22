@@ -8,8 +8,6 @@ import android.view.View;
 import android.widget.Button;
 
 import com.example.myapplication.databinding.ActivityLoginBinding;
-import com.example.myapplication.parking.ParkActivity;
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 public class LoginActivity extends AppCompatActivity {
     private ActivityLoginBinding binding;
