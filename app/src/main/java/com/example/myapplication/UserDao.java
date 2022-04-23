@@ -12,8 +12,8 @@ public interface UserDao {
     @Query("SELECT * FROM Account")
     List<Account> getAll();
 
-    @Query("SELECT * FROM Account WHERE uid IN (:userIds)")
-    List<Account> loadAllByIds(int[] userIds);
+    @Query("SELECT username FROM Account")
+    List<String> getAllUsernames();
 
     @Query("SELECT * FROM Account WHERE username LIKE :name LIMIT 1")
     Account findByName(String name);

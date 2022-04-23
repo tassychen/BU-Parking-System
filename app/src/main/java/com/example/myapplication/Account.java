@@ -7,9 +7,9 @@ import androidx.room.PrimaryKey;
 
 @Entity
 public class Account{
-    @PrimaryKey @NonNull
-    public int uid;
 
+    @PrimaryKey
+    @NonNull
     @ColumnInfo(name= "Username")
     public String username;
 
