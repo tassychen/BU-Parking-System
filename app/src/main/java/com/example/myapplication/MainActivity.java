@@ -1,11 +1,10 @@
 package com.example.myapplication;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 
 import com.example.myapplication.databinding.ActivityMainBinding;
-import com.example.myapplication.parking.CheckInActivity;
+import com.example.myapplication.parking.ParkActivity;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -48,7 +47,7 @@ public class MainActivity extends AppCompatActivity {
 
     public void openParkActivity(){
         // Show user type selection screen
-        Intent intent = new Intent(this, CheckInActivity.class);
+        Intent intent = new Intent(this, ParkActivity.class);
         startActivity(intent);
     }
 }

@@ -22,11 +22,7 @@
             android:value="AIzaSyCmX0fcS-aSrAA552wB9JVf7502wji8WCk" />
 
         <activity
-            android:name=".parking.VehicleParkedActivity"
-            android:exported="false" />
-
-        <activity
-            android:name=".parking.CheckInActivity"
+            android:name=".parking.ParkActivity"
             android:exported="false"
             android:label="ParkActivity" />
         <activity
