@@ -42,10 +42,10 @@ class LoginActivity : AppCompatActivity() {
 
                 }
                 else if(workInfo?.state==WorkInfo.State.FAILED){
-                    var failmsg="Bad Login";
-                    Log.d("Login Result",workInfo?.state.toString());
-                    //val mySnackbar = Snackbar.make(findViewById(R.id.popup), failmsg, 3)
-                    //mySnackbar.show()
+                    findViewById<View>(R.id.badregmsg).visibility=(View.GONE);
+                    findViewById<View>(R.id.goodregmsg).visibility=(View.GONE);
+                    findViewById<View>(R.id.badlogmsg).visibility=(View.VISIBLE);
+
                 }
             }
         }
@@ -63,10 +63,27 @@ class LoginActivity : AppCompatActivity() {
                     .setInputData(data.build())
                     .setConstraints(builder.build())
                     .build()
-            WorkManager.getInstance(applicationContext).enqueue(regWorkRequest)
-            Thread.sleep(1_000)
-            Log.d("Status of Registration",(WorkManager.getInstance(applicationContext).getWorkInfosByTag("Login").toString()));
 
+            workManager.enqueue(regWorkRequest)
+            workManager.getWorkInfoByIdLiveData(regWorkRequest.id).observe(this){ workInfo ->
+
+                if(workInfo?.state == WorkInfo.State.SUCCEEDED) {
+                    Log.d("Registration Result","Succeeded")
+                    findViewById<View>(R.id.badlogmsg).visibility=(View.GONE);
+                    findViewById<View>(R.id.badregmsg).visibility=(View.GONE);
+                    findViewById<View>(R.id.goodregmsg).visibility=(View.VISIBLE);
+
+                    //Log.d("Registration Result",workInfo?.state.toString());
+
+
+                }
+                else if(workInfo?.state==WorkInfo.State.FAILED){
+                    findViewById<View>(R.id.badlogmsg).visibility=(View.GONE);
+                    findViewById<View>(R.id.goodregmsg).visibility=(View.GONE);
+                    findViewById<View>(R.id.badregmsg).visibility=(View.VISIBLE);
+
+                }
+            }
         }
     }
 }
