@@ -24,9 +24,18 @@ public class LoginWorker extends Worker {
         AppDatabase db = Room.databaseBuilder(getApplicationContext(),
                 AppDatabase.class, "Account.sqlite").build();
         UserDao userDao = db.userDao();
-        userDao.login(getInputData().getString("username"),getInputData().getString("password"));
-        Log.d("All Usernames",userDao.getAllUsernames().toString());
+        Account result=userDao.login(getInputData().getString("username"),getInputData().getString("password"));
+
         // Indicate whether the work finished successfully with the Result
-        return Result.success();
+        try {
+            Log.d("Welcome",result.username.toString());
+            return Result.success();
+        } catch (Exception e) {
+            Log.d("No login","please");
+            return Result.failure();
+        }
+
+
+
     }
 }
