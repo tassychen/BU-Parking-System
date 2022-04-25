@@ -27,25 +27,25 @@ class LoginActivity : AppCompatActivity() {
             val data = Data.Builder()
             data.putString("username", username.text.toString())
             data.putString("password", password.text.toString())
-            val testWorkRequest = OneTimeWorkRequest.Builder(LoginWorker::class.java)
+            val loginWorkRequest = OneTimeWorkRequest.Builder(LoginWorker::class.java)
                     .addTag("Login")
                     .setInputData(data.build())
                     .setConstraints(builder.build())
                     .build()
-            workManager.enqueue(testWorkRequest)
-            workManager.getWorkInfosByTagLiveData("Login").observe(this){ workInfos ->
-                //Log.d("Workstatus",workInfo[0].state.toString());
-                val workInfo=workInfos[0]
+            workManager.enqueue(loginWorkRequest)
+            workManager.getWorkInfoByIdLiveData(loginWorkRequest.id).observe(this){ workInfo ->
                 if(workInfo?.state == WorkInfo.State.SUCCEEDED) {
                     Log.d("Login Result","Succeeded");
+                    Log.d("Login Result",workInfo?.state.toString());
                     val intent = Intent(this, MainActivity::class.java);
                     startActivity(intent);
 
                 }
                 else if(workInfo?.state==WorkInfo.State.FAILED){
                     var failmsg="Bad Login";
-                    val mySnackbar = Snackbar.make(findViewById(R.id.editTextTextPassword), failmsg, 3)
-                    mySnackbar.show()
+                    Log.d("Login Result",workInfo?.state.toString());
+                    //val mySnackbar = Snackbar.make(findViewById(R.id.popup), failmsg, 3)
+                    //mySnackbar.show()
                 }
             }
         }
