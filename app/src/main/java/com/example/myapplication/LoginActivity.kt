@@ -1,14 +1,13 @@
 package com.example.myapplication
 import android.content.Intent
+import android.content.SharedPreferences
 import android.os.Bundle
 import android.util.Log
 import android.view.View
 import android.widget.EditText
 import androidx.appcompat.app.AppCompatActivity
-import androidx.lifecycle.Observer
 import androidx.work.*
 import com.example.myapplication.databinding.ActivityLoginBinding
-import com.google.android.material.snackbar.Snackbar
 
 class LoginActivity : AppCompatActivity() {
     private var binding: ActivityLoginBinding? = null
@@ -18,6 +17,10 @@ class LoginActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityLoginBinding.inflate(layoutInflater)
         setContentView(binding!!.root)
+        var pref = applicationContext.getSharedPreferences("MyPref", 0) // 0 - for private mode
+        var editor: SharedPreferences.Editor = pref.edit()
+
+
         val login = binding!!.loginButton
         login.setOnClickListener {
             val username = findViewById<View>(R.id.editTextTextPersonName) as EditText
@@ -37,8 +40,15 @@ class LoginActivity : AppCompatActivity() {
                 if(workInfo?.state == WorkInfo.State.SUCCEEDED) {
                     Log.d("Login Result","Succeeded");
                     Log.d("Login Result",workInfo?.state.toString());
+
+
+                    editor.putString("current_username", username.toString());
+                    editor.commit()
+
                     val intent = Intent(this, MainActivity::class.java);
                     startActivity(intent);
+
+
 
                 }
                 else if(workInfo?.state==WorkInfo.State.FAILED){
