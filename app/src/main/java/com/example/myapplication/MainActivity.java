@@ -28,7 +28,7 @@ public class MainActivity extends AppCompatActivity {
 
 
         SharedPreferences pref = getApplicationContext().getSharedPreferences("MyPref", 0); // 0 - for private mode
-        Log.d("Logged in as User",pref.getString("current_username",null));
+        Log.d("Logged in as User", pref.getString("current_username", null));
 
 
         BottomNavigationView navView = findViewById(R.id.nav_view);

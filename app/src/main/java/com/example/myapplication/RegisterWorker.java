@@ -32,6 +32,11 @@ public class RegisterWorker extends Worker {
         Account john = new Account();
         john.username=getInputData().getString("username");
         john.password=getInputData().getString("password");
+        john.make="none";
+        john.model="none";
+        john.color="none";
+        john.number="none";
+        john.state="none";
         userDao.insertAll(john);
         Log.d("All Usernames",userDao.getAllUsernames().toString());
         // Indicate whether the work finished successfully with the Result

@@ -18,4 +18,19 @@ public class Account{
 
     @ColumnInfo(name = "Permit")
     public String permit;
+
+    @ColumnInfo(name = "Make")
+    public String make;
+
+    @ColumnInfo(name = "Model")
+    public String model;
+
+    @ColumnInfo(name = "Color")
+    public String color;
+
+    @ColumnInfo(name = "Number")
+    public String number;
+
+    @ColumnInfo(name = "State")
+    public String state;
 }

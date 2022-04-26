@@ -39,11 +39,11 @@ class LoginActivity : AppCompatActivity() {
             workManager.getWorkInfoByIdLiveData(loginWorkRequest.id).observe(this){ workInfo ->
                 if(workInfo?.state == WorkInfo.State.SUCCEEDED) {
                     Log.d("Login Result","Succeeded");
-                    Log.d("Login Result",workInfo?.state.toString());
+                    Log.d("Login Result", workInfo.state.toString());
 
 
-                    editor.putString("current_username", username.toString());
-                    editor.commit()
+                    editor.putString("current_username", username.text.toString());
+                    editor.apply()
 
                     val intent = Intent(this, MainActivity::class.java);
                     startActivity(intent);
