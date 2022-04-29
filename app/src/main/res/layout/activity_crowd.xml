@@ -19,31 +19,41 @@
             android:id="@+id/almost_full"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="almost completely full" />
+            android:minHeight="48dp"
+            android:text="almost completely full"
+            android:buttonTint="@color/grey"/>
 
         <RadioButton
             android:id="@+id/quite_full"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="relatively full" />
+            android:minHeight="48dp"
+            android:text="relatively full"
+            android:buttonTint="@color/grey"/>
 
         <RadioButton
             android:id="@+id/half_full"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="about half full" />
+            android:minHeight="48dp"
+            android:text="about half full"
+            android:buttonTint="@color/grey"/>
 
         <RadioButton
             android:id="@+id/quite_empty"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="relatively empty" />
+            android:minHeight="48dp"
+            android:text="relatively empty"
+            android:buttonTint="@color/grey"/>
 
         <RadioButton
             android:id="@+id/almost_empty"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="almost completely empty" />
+            android:minHeight="48dp"
+            android:text="almost completely empty"
+            android:buttonTint="@color/grey"/>
     </RadioGroup>
 
     <Button
@@ -53,7 +63,6 @@
         android:text="submit"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/radioGroup"
         app:layout_constraintVertical_bias="0.093" />
@@ -62,7 +71,7 @@
         android:id="@+id/crowdedness"
         android:layout_width="313dp"
         android:layout_height="43dp"
-        android:layout_marginTop="52dp"
+        android:layout_marginTop="70dp"
         android:text="How crowded is your lot?"
         android:textAlignment="center"
         android:textSize="24sp"
