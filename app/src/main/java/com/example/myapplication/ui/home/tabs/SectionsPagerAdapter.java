@@ -9,13 +9,14 @@ import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentPagerAdapter;
 
 import com.example.myapplication.R;
-import com.example.myapplication.ui.dashboard.Permit;
+import com.google.firebase.database.DatabaseReference;
 
 public class SectionsPagerAdapter extends FragmentPagerAdapter {
 
     @StringRes
     private static final int[] TAB_TITLES = new int[]{R.string.tab_text_1, R.string.tab_text_2};
     private final Context mContext;
+    private DatabaseReference Database;
 
     public SectionsPagerAdapter(Context context, FragmentManager fm) {
         super(fm);

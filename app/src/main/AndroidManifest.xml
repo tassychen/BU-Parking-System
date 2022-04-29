@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
     package="com.example.myapplication">
 
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
@@ -15,17 +14,50 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.MyApplication">
         <activity
+            android:name=".ui.dashboard.reservation.VehicleActivity"
+            android:exported="false"
+            android:label = "Register Vehicle"/>
+        <activity
+            android:name=".options.account.AccountActivity"
+            android:exported="false"
+            android:label="Account"/>
+        <activity
+            android:name=".options.settings.SettingsActivity"
+            android:exported="false"
+            android:label="Settings"/>
+        <activity
+            android:name=".ui.dashboard.reservation.EmployeeReservationActivity"
+            android:exported="false"
+            android:label="Reserve permit"/>
+        <activity
+            android:name=".UserTypeActivity"
+            android:exported="false"
+            android:label="Welcome"/>
+        <activity
+            android:name=".ui.dashboard.reservation.StudentReservationActivity"
+            android:exported="false"
+            android:label="Reserve permit"/>
+        <activity
+            android:name=".ui.dashboard.reservation.CreditPaymentActivity"
+            android:exported="false"
+            android:label="Payment"/>
+        <activity
             android:name=".parking.CrowdActivity"
-            android:exported="false" />
+            android:exported="false"
+            android:label="Crowd"/>
 
         <meta-data
             android:name="com.google.android.geo.API_KEY"
             android:value="AIzaSyCmX0fcS-aSrAA552wB9JVf7502wji8WCk" />
 
         <activity
-            android:name=".parking.ParkActivity"
+            android:name=".parking.VehicleParkedActivity"
             android:exported="false"
-            android:label="ParkActivity" />
+            android:label="Parked"/>
+        <activity
+            android:name=".parking.CheckInActivity"
+            android:exported="false"
+            android:label="Park" />
         <activity
             android:name=".MainActivity"
             android:exported="false"
@@ -33,7 +65,7 @@
         <activity
             android:name=".LoginActivity"
             android:exported="true"
-            android:label="LoginActivity">
+            android:label="Sign In">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

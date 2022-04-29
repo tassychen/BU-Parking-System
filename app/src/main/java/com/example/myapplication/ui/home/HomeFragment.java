@@ -2,10 +2,13 @@ package com.example.myapplication.ui.home;
 
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
@@ -14,21 +17,31 @@ import androidx.viewpager.widget.ViewPager;
 
 
 import com.example.myapplication.R;
+import com.example.myapplication.User;
 import com.example.myapplication.databinding.FragmentHomeBinding;
 import com.example.myapplication.ui.home.tabs.AllLocationsTab;
 import com.example.myapplication.ui.home.tabs.PermitLocationsTab;
-import com.example.myapplication.ui.home.tabs.SectionsPagerAdapter;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 import com.google.android.material.tabs.TabLayout;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class HomeFragment extends Fragment {
     private FragmentHomeBinding binding;
+    private DatabaseReference Database;
+    private User user;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+
     }
 
     @Override

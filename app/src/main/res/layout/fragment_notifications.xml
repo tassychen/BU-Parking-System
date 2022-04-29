@@ -11,111 +11,133 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="55dp"
-        android:text="Registered Vehicle"
-        android:textAlignment="center"
         android:textSize="35sp"
+        android:text = "Registered Vehicle"
         android:textStyle="bold"
+        android:textAlignment="center"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <EditText
+    <TextView
         android:id="@+id/make"
-        android:layout_width="270dp"
+        android:layout_width="180dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="30dp"
-        android:hint="Make"
-        android:inputType="none"
-        android:text="Make:"
-        android:textSize="24sp"
-        app:layout_constraintBottom_toTopOf="@+id/model"
+        android:layout_marginEnd="10dp"
+        android:text="Make"
+        android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.496"
+        app:layout_constraintTop_toBottomOf="@id/registered_vehicle" />
+
+    <TextView
+        android:id="@+id/model"
+        android:layout_width="180dp"
+        android:layout_height="wrap_content"
+        android:text="Model"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="10dp"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/make" />
+
+    <TextView
+        android:id="@+id/color"
+        android:layout_width="180dp"
+        android:layout_height="wrap_content"
+        android:text="Color"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="10dp"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/model" />
+
+    <TextView
+        android:id="@+id/number"
+        android:layout_width="180dp"
+        android:layout_height="wrap_content"
+        android:text="Plate number"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="10dp"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/color" />
+
+    <TextView
+        android:id="@+id/state"
+        android:layout_width="180dp"
+        android:layout_height="wrap_content"
+        android:text="Plate State"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="10dp"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/number" />
+
+    <TextView
+        android:id="@+id/makelabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Make: "
+        android:textSize="20sp"
+        android:layout_marginTop="30dp"
+        android:layout_marginStart="60dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/registered_vehicle" />
 
-    <EditText
-        android:id="@+id/model"
-        android:layout_width="270dp"
+    <TextView
+        android:id="@+id/modellabel"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:hint="Model"
-        android:inputType="none"
-        android:text="Model:"
-        android:textSize="24sp"
-        app:layout_constraintBottom_toTopOf="@+id/color"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
+        android:text="Model: "
+        android:layout_marginTop="20dp"
+        android:layout_marginStart="60dp"
+        android:textSize="20sp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/make" />
+        app:layout_constraintTop_toBottomOf="@+id/makelabel" />
 
-    <EditText
-        android:id="@+id/color"
-        android:layout_width="270dp"
+    <TextView
+        android:id="@+id/colorlabel"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:hint="Color"
-        android:inputType="none"
-        android:text="Color:"
-        android:textSize="24sp"
-        app:layout_constraintBottom_toTopOf="@+id/number"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
+        android:text="Color: "
+        android:layout_marginTop="20dp"
+        android:layout_marginStart="60dp"
+        android:textSize="20sp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/model" />
+        app:layout_constraintTop_toBottomOf="@+id/modellabel" />
 
-    <EditText
-        android:id="@+id/number"
-        android:layout_width="270dp"
+    <TextView
+        android:id="@+id/numberlabel"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:hint="Plate Number"
-        android:inputType="none"
-        android:text="Plate Number:"
-        android:textSize="24sp"
-        app:layout_constraintBottom_toTopOf="@+id/state"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
+        android:text="Plate number: "
+        android:layout_marginTop="20dp"
+        android:layout_marginStart="60dp"
+        android:textSize="20sp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/color" />
+        app:layout_constraintTop_toBottomOf="@+id/colorlabel" />
 
-    <EditText
-        android:id="@+id/state"
-        android:layout_width="270dp"
+    <TextView
+        android:id="@+id/statelabel"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:hint="Plate State"
-        android:inputType="none"
-        android:text="Plate State:"
-        android:textSize="24sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.496"
+        android:text="Plate state: "
+        android:layout_marginTop="20dp"
+        android:layout_marginStart="60dp"
+        android:textSize="20sp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/number" />
+        app:layout_constraintTop_toBottomOf="@+id/numberlabel" />
 
     <Button
-        android:id="@+id/vehicleUpdateButton"
-        android:layout_width="233dp"
-        android:layout_height="49dp"
-        android:layout_marginTop="36dp"
-        android:layout_marginBottom="248dp"
-        android:text="Update Vehicle Information"
+        android:id="@+id/update"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Update vehicle information"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/state" />
-
-    <Button
-        android:id="@+id/confirmUpdateButton"
-        android:visibility="gone"
-        android:layout_width="233dp"
-        android:layout_height="49dp"
-        android:layout_marginTop="36dp"
-        android:layout_marginBottom="248dp"
-        android:text="Confirm Vehicle Update"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/state" />
-
+        app:layout_constraintTop_toBottomOf="@+id/statelabel" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

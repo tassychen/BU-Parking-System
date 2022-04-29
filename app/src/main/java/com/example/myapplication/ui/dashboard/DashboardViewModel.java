@@ -9,17 +9,23 @@ public class DashboardViewModel extends ViewModel {
     private final MutableLiveData<String> permitName;
     private final MutableLiveData<String> permitInfo;
     private final MutableLiveData<String> permitLots;
+    private final MutableLiveData<String> lot;
+    private String usertype;
 
     public DashboardViewModel() {
         permitName = new MutableLiveData<>();
         permitInfo = new MutableLiveData<>();
         permitLots = new MutableLiveData<>();
-        permitName.setValue("You have no active permits");
+        lot = new MutableLiveData<>();
+        permitName.setValue("");
         permitInfo.setValue("");
         permitLots.setValue("");
+        lot.setValue("You have no active permits");
     }
 
-
+    public LiveData<String> getlot() {
+        return lot;
+    }
     public LiveData<String> getPermitName() {
         return permitName;
     }
@@ -30,27 +36,33 @@ public class DashboardViewModel extends ViewModel {
         return permitLots;
     }
 
-    public void setPermit(String permitName) {
-        switch (permitName){
-            case "Orange": orangePermit();
-                break;
-            case "Langsam": langsamPermit();
-                break;
-            case "StudentCommuter": studentCommuterPermit();
-                break;
-            case "StudentFlex": studentFlexPermit();
-                break;
-            case "Evening": eveningPermit();
-                break;
-            case "EmployeeCommuter": employeeCommuterPermit();
-                break;
-            case "EmployeeFlex": employeeFlexPermit();
-                break;
-            case "OffPeakCommuter": offPeakCommuterPermit();
-                break;
-            case "Carpool" : carpoolPermit();
-                break;
+    public void setPermit(String userType, String permitName) {
+        if (userType.equals("Employee")) {
+            switch (permitName){
+                case "Commuter": employeeCommuterPermit();
+                    break;
+                case "Flex": employeeFlexPermit();
+                    break;
+                case "OffPeakCommuter": offPeakCommuterPermit();
+                    break;
+                case "Carpool" : carpoolPermit();
+                    break;
+            }
+        } else if (userType.equals("Student")){
+            switch (permitName){
+                case "Orange": orangePermit();
+                    break;
+                case "Langsam": langsamPermit();
+                    break;
+                case "Commuter": studentCommuterPermit();
+                    break;
+                case "Flex": studentFlexPermit();
+                    break;
+                case "Evening": eveningPermit();
+                    break;
+            }
         }
+        lot.setValue("Lots");
     }
 
     public void orangePermit(){

@@ -1,35 +1,40 @@
 package com.example.myapplication.parking;
 
-import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.Spinner;
-import android.widget.Toast;
-import android.widget.Toolbar;
 
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.navigation.NavController;
+import androidx.navigation.Navigation;
+import androidx.navigation.ui.NavigationUI;
 
-
-import com.example.myapplication.MainActivity;
 import com.example.myapplication.R;
+import com.example.myapplication.databinding.ActivityCheckInBinding;
+import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
-
-import com.example.myapplication.databinding.ActivityParkBinding;
-import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
-public class ParkActivity extends AppCompatActivity implements OnMapReadyCallback{
+import java.time.LocalTime;
+
+public class CheckInActivity extends AppCompatActivity
+        implements OnMapReadyCallback{
 
     private GoogleMap mMap;
-    private ActivityParkBinding binding;
+    private String location;
     private LatLng agganis;
     private LatLng langsam;
     private LatLng buick;
@@ -70,25 +75,30 @@ public class ParkActivity extends AppCompatActivity implements OnMapReadyCallbac
     MarkerOptions Orange3;
     MarkerOptions Orange4;
     MarkerOptions Granby;
-    private String[] locations = {"Agganis Arena", "Buick Street Lot", "CAS Lot", "CFA Lot", "Essex Street Garage & Lot", "Granby Lot", "Kenmore Lot", "Langsam Garage",
-            "Lower Bridge Lot", "Rafik B. Hariri Building Garage", "Upper Bridge Lot", "Warren Towers Garage","2 - 22 Buswell Street", "29 - 47 Buswell Street",
-            "46 Mountfort Street", "575 Commonwealth Avenue", "730/750 Commonwealth Avenue", "766 Commonwealth Avenue", "830-824 Mountfort Street","890 Commonwealth Avenue"};
+    private final String[] locations = {"Agganis Arena", "Buick Street Lot", "CAS Lot", "CFA Lot", "Essex Street Garage & Lot", "Granby Lot", "Kenmore Lot", "Langsam Garage",
+            "Lower Bridge Lot", "Rafik B. Hariri Building Garage", "Upper Bridge Lot", "Warren Towers Garage", "2 - 22 Buswell Street", "29 - 47 Buswell Street",
+            "46 Mountfort Street", "575 Commonwealth Avenue", "730/750 Commonwealth Avenue", "766 Commonwealth Avenue", "830-824 Mountfort Street", "890 Commonwealth Avenue"};
+    private DatabaseReference Database;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        binding = ActivityParkBinding.inflate(getLayoutInflater());
+        com.example.myapplication.databinding.ActivityCheckInBinding binding = ActivityCheckInBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
-        Spinner spinner = (Spinner)findViewById(R.id.spinner);
+        ActionBar actionBar = getSupportActionBar();
+        actionBar.setDisplayHomeAsUpEnabled(true);
+
+        Spinner spinner = findViewById(R.id.spinner);
         ArrayAdapter<CharSequence> adapter = new ArrayAdapter(this, android.R.layout.simple_spinner_item, locations);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinner.setAdapter(adapter);
         spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parentView, View selectedItemView, int position, long id) {
-                String location = (String) parentView.getItemAtPosition(position);
+                location = (String) parentView.getItemAtPosition(position);
                 addMarker(location);
             }
 
@@ -100,11 +110,17 @@ public class ParkActivity extends AppCompatActivity implements OnMapReadyCallbac
         });
 
         Button button = binding.park;
+        Database = FirebaseDatabase.getInstance().getReference();
+        String uid = FirebaseAuth.getInstance().getCurrentUser().getUid();
 
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                Database.child("user").child(uid).child("location").setValue(location);
+                Database.child("user").child(uid).child("time").setValue(LocalTime.now().toString());
+                Database.child("user").child(uid).child("parked").setValue(true);
                 Intent intent = new Intent(getApplicationContext(), CrowdActivity.class);
+                intent.putExtra("location", location);
                 startActivity(intent);
             }
         });
@@ -160,86 +176,102 @@ public class ParkActivity extends AppCompatActivity implements OnMapReadyCallbac
         Granby = new MarkerOptions().position(granby).title("Granby Lot").snippet("Address: 665 Commonwealth Avenue");
     }
 
-    public void Park(){
-
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        switch (item.getItemId()) {
+            case android.R.id.home:
+                this.finish();
+                return true;
+        }
+        return super.onOptionsItemSelected(item);
     }
 
     public void addMarker(String location) {
-        Context context = getApplicationContext();
-        CharSequence text = location;
-        int duration = Toast.LENGTH_SHORT;
         mMap.clear();
 
-        Toast toast = Toast.makeText(context, text, duration);
-        toast.show();
-
-        switch (location){
-            case "Agganis Arena": mMap.addMarker(Agganis).showInfoWindow();
-                mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(agganis,16.0f));
+        switch (location) {
+            case "Agganis Arena":
+                mMap.addMarker(Agganis).showInfoWindow();
+                mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(agganis, 16.0f));
                 break;
-            case "Buick Street Lot": mMap.addMarker(Buick).showInfoWindow();
-                mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(buick,16.0f));
+            case "Buick Street Lot":
+                mMap.addMarker(Buick).showInfoWindow();
+                mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(buick, 16.0f));
                 break;
-            case "CAS Lot": mMap.addMarker(CAS).showInfoWindow();
-                mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(cas,16.0f));
+            case "CAS Lot":
+                mMap.addMarker(CAS).showInfoWindow();
+                mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(cas, 16.0f));
                 break;
-            case "CFA Lot": mMap.addMarker(CFA).showInfoWindow();
-                mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(cfa,16.0f));
+            case "CFA Lot":
+                mMap.addMarker(CFA).showInfoWindow();
+                mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(cfa, 16.0f));
                 break;
-            case "Essex Street Garage & Lot": mMap.addMarker(Essex).showInfoWindow();
-                mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(essex,16.0f));
+            case "Essex Street Garage & Lot":
+                mMap.addMarker(Essex).showInfoWindow();
+                mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(essex, 16.0f));
                 break;
-            case "Granby Lot": mMap.addMarker(Granby).showInfoWindow();
-                mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(granby,16.0f));
+            case "Granby Lot":
+                mMap.addMarker(Granby).showInfoWindow();
+                mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(granby, 16.0f));
                 break;
-            case "Kenmore Lot": mMap.addMarker(Kenmore).showInfoWindow();
-                mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(kenmore,16.0f));
+            case "Kenmore Lot":
+                mMap.addMarker(Kenmore).showInfoWindow();
+                mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(kenmore, 16.0f));
                 break;
-            case "Langsam Garage": mMap.addMarker(Langsam).showInfoWindow();
-                mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(langsam,16.0f));
+            case "Langsam Garage":
+                mMap.addMarker(Langsam).showInfoWindow();
+                mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(langsam, 16.0f));
                 break;
-            case "Lower Bridge Lot": mMap.addMarker(LowerBridge).showInfoWindow();
-                mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(lowerbridge,16.0f));
+            case "Lower Bridge Lot":
+                mMap.addMarker(LowerBridge).showInfoWindow();
+                mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(lowerbridge, 16.0f));
                 break;
-            case "Rafik B. Hariri Building Garage": mMap.addMarker(Rafik).showInfoWindow();
-                mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(rafik,16.0f));
+            case "Rafik B. Hariri Building Garage":
+                mMap.addMarker(Rafik).showInfoWindow();
+                mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(rafik, 16.0f));
                 break;
-            case "Upper Bridge Lot": mMap.addMarker(UpperBridge).showInfoWindow();
-                mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(upperbridge,16.0f));
+            case "Upper Bridge Lot":
+                mMap.addMarker(UpperBridge).showInfoWindow();
+                mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(upperbridge, 16.0f));
                 break;
-            case "Warren Towers Garage": mMap.addMarker(Warren).showInfoWindow();
-                mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(warren,16.0f));
+            case "Warren Towers Garage":
+                mMap.addMarker(Warren).showInfoWindow();
+                mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(warren, 16.0f));
                 break;
-            case "2 -22 Buswell Street": mMap.addMarker(Orange2).showInfoWindow();
-                mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(orange2,16.0f));
+            case "2 -22 Buswell Street":
+                mMap.addMarker(Orange2).showInfoWindow();
+                mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(orange2, 16.0f));
                 break;
-            case "29 -47 Buswell Street": mMap.addMarker(Orange1).showInfoWindow();
-                mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(orange1,16.0f));
+            case "29 -47 Buswell Street":
+                mMap.addMarker(Orange1).showInfoWindow();
+                mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(orange1, 16.0f));
                 break;
-            case "46 Mountfort Street": mMap.addMarker(Orange3).showInfoWindow();
-                mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(orange3,16.0f));
+            case "46 Mountfort Street":
+                mMap.addMarker(Orange3).showInfoWindow();
+                mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(orange3, 16.0f));
                 break;
-            case "575 Commonwealth Avenue": mMap.addMarker(FiveSeventyFive).showInfoWindow();
-                mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(fiveseventyfive,16.0f));
+            case "575 Commonwealth Avenue":
+                mMap.addMarker(FiveSeventyFive).showInfoWindow();
+                mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(fiveseventyfive, 16.0f));
                 break;
-            case "730/750 Commonwealth Avenue": mMap.addMarker(SevenThirty_SevenFifty).showInfoWindow();
-                mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(seventhirtysevenfifty,16.0f));
+            case "730/750 Commonwealth Avenue":
+                mMap.addMarker(SevenThirty_SevenFifty).showInfoWindow();
+                mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(seventhirtysevenfifty, 16.0f));
                 break;
-            case "766 Commonwealth Avenue": mMap.addMarker(SevenSixtySix).showInfoWindow();
-                mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(sevensixtysix,16.0f));
+            case "766 Commonwealth Avenue":
+                mMap.addMarker(SevenSixtySix).showInfoWindow();
+                mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(sevensixtysix, 16.0f));
                 break;
-            case "830-824 Mountfort Street": mMap.addMarker(Orange4).showInfoWindow();
-                mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(orange4,16.0f));
+            case "830-824 Mountfort Street":
+                mMap.addMarker(Orange4).showInfoWindow();
+                mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(orange4, 16.0f));
                 break;
-            case "890 Commonwealth Avenue": mMap.addMarker(EightNinety).showInfoWindow();
-                mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(eightninety,16.0f));
+            case "890 Commonwealth Avenue":
+                mMap.addMarker(EightNinety).showInfoWindow();
+                mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(eightninety, 16.0f));
                 break;
         }
-
-
     }
-
-
 
     @Override
     public void onMapReady(GoogleMap googleMap) {
@@ -247,7 +279,7 @@ public class ParkActivity extends AppCompatActivity implements OnMapReadyCallbac
 
         // move the camera to BU
         LatLng bu = new LatLng(42.351139402544476, -71.10977147739284);
-        mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(bu,14.0f));
+        mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(bu, 14.0f));
     }
 }
 

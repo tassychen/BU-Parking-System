@@ -3,39 +3,49 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/lukai/AndroidStudioProjects/MyApplication/app/src/main/res/drawable-anydpi/ic_stat_name.xml" value="0.1335" />
         <entry key="..\:/Users/lukai/AndroidStudioProjects/MyApplication/app/src/main/res/drawable/ic_checkin.xml" value="0.161" />
         <entry key="..\:/Users/lukai/AndroidStudioProjects/MyApplication/app/src/main/res/drawable/ic_dashboard_black_24dp.xml" value="0.1" />
         <entry key="..\:/Users/lukai/AndroidStudioProjects/MyApplication/app/src/main/res/drawable/ic_home_black_24dp.xml" value="0.1" />
+        <entry key="..\:/Users/lukai/AndroidStudioProjects/MyApplication/app/src/main/res/drawable/ic_launcher_foreground.xml" value="0.1335" />
+        <entry key="..\:/Users/lukai/AndroidStudioProjects/MyApplication/app/src/main/res/drawable/ic_logo.xml" value="0.1335" />
         <entry key="..\:/Users/lukai/AndroidStudioProjects/MyApplication/app/src/main/res/drawable/ic_notifications_black_24dp.xml" value="0.1" />
         <entry key="..\:/Users/lukai/AndroidStudioProjects/MyApplication/app/src/main/res/drawable/ic_park.xml" value="0.1415" />
         <entry key="..\:/Users/lukai/AndroidStudioProjects/MyApplication/app/src/main/res/drawable/ic_up.xml" value="0.152" />
-        <entry key="..\:/Users/lukai/AndroidStudioProjects/MyApplication/app/src/main/res/layout/activity_crowd.xml" value="0.264" />
+        <entry key="..\:/Users/lukai/AndroidStudioProjects/MyApplication/app/src/main/res/layout/action_account.xml" value="0.25" />
+        <entry key="..\:/Users/lukai/AndroidStudioProjects/MyApplication/app/src/main/res/layout/action_settings.xml" value="0.25" />
+        <entry key="..\:/Users/lukai/AndroidStudioProjects/MyApplication/app/src/main/res/layout/activity_check_in.xml" value="0.25" />
+        <entry key="..\:/Users/lukai/AndroidStudioProjects/MyApplication/app/src/main/res/layout/activity_crowd.xml" value="0.1" />
+        <entry key="..\:/Users/lukai/AndroidStudioProjects/MyApplication/app/src/main/res/layout/activity_employee_reservation.xml" value="0.234375" />
         <entry key="..\:/Users/lukai/AndroidStudioProjects/MyApplication/app/src/main/res/layout/activity_location.xml" value="0.1" />
         <entry key="..\:/Users/lukai/AndroidStudioProjects/MyApplication/app/src/main/res/layout/activity_login.xml" value="0.25" />
         <entry key="..\:/Users/lukai/AndroidStudioProjects/MyApplication/app/src/main/res/layout/activity_main.xml" value="0.264" />
         <entry key="..\:/Users/lukai/AndroidStudioProjects/MyApplication/app/src/main/res/layout/activity_park.xml" value="0.1" />
         <entry key="..\:/Users/lukai/AndroidStudioProjects/MyApplication/app/src/main/res/layout/activity_parked.xml" value="0.264" />
-        <entry key="..\:/Users/lukai/AndroidStudioProjects/MyApplication/app/src/main/res/layout/activity_vehicle_parked.xml" value="0.11043566362715299" />
+        <entry key="..\:/Users/lukai/AndroidStudioProjects/MyApplication/app/src/main/res/layout/activity_payment.xml" value="0.1" />
+        <entry key="..\:/Users/lukai/AndroidStudioProjects/MyApplication/app/src/main/res/layout/activity_student_reservation.xml" value="0.1" />
+        <entry key="..\:/Users/lukai/AndroidStudioProjects/MyApplication/app/src/main/res/layout/activity_user_type.xml" value="0.25" />
+        <entry key="..\:/Users/lukai/AndroidStudioProjects/MyApplication/app/src/main/res/layout/activity_vehicle.xml" value="0.234375" />
+        <entry key="..\:/Users/lukai/AndroidStudioProjects/MyApplication/app/src/main/res/layout/activity_vehicle_parked.xml" value="0.4" />
+        <entry key="..\:/Users/lukai/AndroidStudioProjects/MyApplication/app/src/main/res/layout/app_bar_main.xml" value="0.25" />
+        <entry key="..\:/Users/lukai/AndroidStudioProjects/MyApplication/app/src/main/res/layout/content_main.xml" value="0.25" />
+        <entry key="..\:/Users/lukai/AndroidStudioProjects/MyApplication/app/src/main/res/layout/fragment_account.xml" value="0.25" />
         <entry key="..\:/Users/lukai/AndroidStudioProjects/MyApplication/app/src/main/res/layout/fragment_all.xml" value="0.1" />
-        <entry key="..\:/Users/lukai/AndroidStudioProjects/MyApplication/app/src/main/res/layout/fragment_dashboard.xml" value="0.264" />
+        <entry key="..\:/Users/lukai/AndroidStudioProjects/MyApplication/app/src/main/res/layout/fragment_dashboard.xml" value="0.1" />
         <entry key="..\:/Users/lukai/AndroidStudioProjects/MyApplication/app/src/main/res/layout/fragment_dashboard_tab.xml" value="0.24635416666666668" />
         <entry key="..\:/Users/lukai/AndroidStudioProjects/MyApplication/app/src/main/res/layout/fragment_first.xml" value="0.22282608695652173" />
         <entry key="..\:/Users/lukai/AndroidStudioProjects/MyApplication/app/src/main/res/layout/fragment_home.xml" value="0.264" />
+        <entry key="..\:/Users/lukai/AndroidStudioProjects/MyApplication/app/src/main/res/layout/fragment_idk.xml" value="0.25" />
         <entry key="..\:/Users/lukai/AndroidStudioProjects/MyApplication/app/src/main/res/layout/fragment_label.xml" value="0.234375" />
-        <entry key="..\:/Users/lukai/AndroidStudioProjects/MyApplication/app/src/main/res/layout/fragment_notifications.xml" value="0.2" />
+        <entry key="..\:/Users/lukai/AndroidStudioProjects/MyApplication/app/src/main/res/layout/fragment_lol.xml" value="0.25" />
+        <entry key="..\:/Users/lukai/AndroidStudioProjects/MyApplication/app/src/main/res/layout/fragment_notifications.xml" value="0.536" />
         <entry key="..\:/Users/lukai/AndroidStudioProjects/MyApplication/app/src/main/res/layout/fragment_permit.xml" value="0.234375" />
+        <entry key="..\:/Users/lukai/AndroidStudioProjects/MyApplication/app/src/main/res/layout/nav_hearder_main.xml" value="0.25" />
+        <entry key="..\:/Users/lukai/AndroidStudioProjects/MyApplication/app/src/main/res/menu/activity_main_drawer.xml" value="0.25" />
         <entry key="..\:/Users/lukai/AndroidStudioProjects/MyApplication/app/src/main/res/menu/bottom_nav_menu.xml" value="0.264" />
+        <entry key="..\:/Users/lukai/AndroidStudioProjects/MyApplication/app/src/main/res/menu/main.xml" value="0.1" />
         <entry key="..\:/Users/lukai/AndroidStudioProjects/MyApplication/app/src/main/res/menu/toolbar_menu.xml" value="0.4" />
-        <entry key="app/src/main/res/layout/activity_crowd.xml" value="0.17147922998986828" />
-        <entry key="app/src/main/res/layout/activity_login.xml" value="0.33" />
-        <entry key="app/src/main/res/layout/activity_main.xml" value="0.14444444444444443" />
-        <entry key="app/src/main/res/layout/activity_park.xml" value="0.35260416666666666" />
-        <entry key="app/src/main/res/layout/activity_parked.xml" value="0.35260416666666666" />
-        <entry key="app/src/main/res/layout/fragment_all.xml" value="0.14444444444444443" />
-        <entry key="app/src/main/res/layout/fragment_dashboard.xml" value="0.14444444444444443" />
-        <entry key="app/src/main/res/layout/fragment_home.xml" value="0.14444444444444443" />
-        <entry key="app/src/main/res/layout/fragment_notifications.xml" value="0.33" />
-        <entry key="app/src/main/res/layout/fragment_permit.xml" value="0.14444444444444443" />
+        <entry key="..\:/Users/lukai/AndroidStudioProjects/MyApplication/app/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml" value="0.1335" />
       </map>
     </option>
   </component>
