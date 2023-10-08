@@ -64,6 +64,7 @@ In the use case diagram there are three major actors and four major use cases. T
 | Post-conditions  | BU employee, staff, guest, or non-first-year BU student is registered |
 
 ![image](https://github.com/lukkn/BUParking/assets/70594133/0148a224-7666-4c38-bc82-50306c550941)
+
 **Diagram.2**
 This is the sequence diagram of our privacy use case, consisting of the objects of the user, client device, and server. Here, our user logs in or registers through their client device, which communicates with the server, which then returns the login/registration result to the client device. This result is then displayed to the user. 
 
@@ -82,6 +83,7 @@ This is the sequence diagram of our privacy use case, consisting of the objects 
 
 
 ![image](https://github.com/lukkn/BUParking/assets/70594133/bc723049-5d62-4434-8d46-7af834be0dea)
+
 **Diagram.3**
 This is the sequence diagram of our reserve new permit case, consisting of the objects of the user, client device, and server. Here, our user requests a new permit through their client device, which communicates with the server, which then returns the result to the client device. This result is then displayed to the user. 
 
