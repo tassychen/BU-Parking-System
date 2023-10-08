@@ -47,5 +47,25 @@ The app will show collective and transparent information about all the available
 **Diagram.1**
 In the use case diagram there are three major actors and four major use cases. The actors are BU Employee and Staff, Guest, and Non-First-Year BU Student while the guests and students can be categorized into two more specific types of users. All the actors benefit from the four system functionalities: Privacy, Reserve New Permit, Update Vehicle Information and Find Desired Lot. For the use case order a new permit and update vehicle information, each has an included use case. 
 
+## Use Case Descriptions
 
+| Use Case         | Privacy |
+| ---------------- | ------- |
+| Actors           | BU employee, staff, Guest, Non-first-year BU student, BU parking lot management |
+| Description      | The BU employee, staff, guest, or non-first-year BU student first registers an account in the BU Parking Lot Management System. After the BU parking lot management adds the user’s username and password into the database, the user uses a secure login to enter the BU Parking Lot Management System, and they can view the account information or perform further tasks. |
+| Stakeholders     |<ul><li>	BU employee, staff, Guest, Non-first-year BU student: to register and log in to the BU Parking Lot Management System </li><li>	BU parking lot management: add new accounts in the database and verify accounts logs in information(username and password) when user logs in.</li></ul> |
+| Trigerring Event | The BU employee, staff, guest, or non-first-year BU student registers an account in the Web-based system. |
+| Steps            | <ol><li> The BU employee and staff, guest, or non-first-year BU student registers an account in the BU Parking Lot Management System</li><li> The BU parking lot management adds the account’s username and password into the database</li><li> The BU employee and staff, guest, or non-first-year BU logs in to the system and view the account information or perform further tasks. </li> |
+| Pre-conditions   | BU employee, staff, guest, or non-first-year BU student must exist |
+| Post-conditions  | BU employee, staff, guest, or non-first-year BU student is registered |
 
+| Use Case         | Reserve New Permit |
+| ---------------- | ------- |
+| Actors           | BU employee, staff, Guest, Non-first-year BU student |
+| Description      | The BU employee, staff, guest, or non-first-year BU student first logs into his/her account in the BU Parking Lot Management System. If they are a new user, they register a new account. Then the user chooses the permit type and then puts in the vehicle information. After the system presents the order summary, the user submits the payment.   |
+| Stakeholders     |<ul><li>	BU parking lot management: add or verify the user’s account in the database when the user logs in/register </li><li>	-	Boston University Parking and Transportation Services: to provide primary information about permits(rates, permit types, availability of the permits, etc) </li></ul> |
+| Related Use Case | <ul><li> *Privacy* </li> <li> includes: *Credit Card Payment* </li> |
+| Trigerring Event | The BU employee, staff, guest, or non-first-year BU student registers an account in the Web-based system. |
+| Steps            | <ol><li> The BU employee and staff, guest, or non-first-year BU student goes to the home page</li><li> If it is a new user, the user links to the registration page to register an account in the BU Parking Lot Management System (*Privacy* use case) </li><li> If an existing user, user logs in to their account (*Privacy* use case) </li> <li> The user chooses the permit type </li> <li> The user puts in the vehicle information</li> <li> The user submits payment (*Credit Card Payment* use case) </li> |
+| Pre-conditions   | <ul><li> BU employee and staff, guest, or non-first-year BU student must exist </li> <li> Permit types must exist for required permits </li> |
+| Post-conditions  | <ul><li> The permit application must be created </li> <li> The permit must be related to a user </li> <li> Permit transaction must be created for the permit payment </li> |
